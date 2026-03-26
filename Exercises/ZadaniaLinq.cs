@@ -31,7 +31,7 @@ public sealed class ZadaniaLinq
     /// </summary>
     public IEnumerable<string> Zadanie02_AdresyEmailStudentow()
     {
-        throw Niezaimplementowano(nameof(Zadanie02_AdresyEmailStudentow));
+        return DaneUczelni.Studenci.Select(e => $"{e.Email}");
     }
 
     /// <summary>
@@ -46,7 +46,9 @@ public sealed class ZadaniaLinq
     /// </summary>
     public IEnumerable<string> Zadanie03_StudenciPosortowani()
     {
-        throw Niezaimplementowano(nameof(Zadanie03_StudenciPosortowani));
+        return DaneUczelni.Studenci.OrderBy(student => student.Nazwisko)
+            .ThenBy(student => student.Imie)
+            .Select(student =>$"{student.NumerIndeksu}, {student.Imie}, {student.Nazwisko}");
     }
 
     /// <summary>
@@ -61,7 +63,9 @@ public sealed class ZadaniaLinq
     /// </summary>
     public IEnumerable<string> Zadanie04_PierwszyPrzedmiotAnalityczny()
     {
-        throw Niezaimplementowano(nameof(Zadanie04_PierwszyPrzedmiotAnalityczny));
+        return DaneUczelni.Przedmioty.Where(p => p.Kategoria == "Analytics")
+            .Select(p => $"{p.Nazwa}, {p.DataStartu}")
+            .Take(1);
     }
 
     /// <summary>
